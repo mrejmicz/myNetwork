@@ -1,0 +1,14 @@
+<table  class="table table-hover table-condensed table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Waluta</th>
+      <th>Kod waluty</th>
+      <th>Kurs</th>
+    </tr>
+  </thead>
+    <tr *ngFor="let currency of currencies">
+      <td>{{currency.currency}}</td>
+      <td>{{currency.code}}</td>
+      <td>{{currency.mid}}</td>
+    </tr>
+</table>

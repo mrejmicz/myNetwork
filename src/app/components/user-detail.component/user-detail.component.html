@@ -1,0 +1,54 @@
+<button class="btn btn-outline-primary btn-lg"(click)="goBack()">Back</button>
+<p>
+<div *ngIf="user">
+  <table class="table table-hover table-condensed table-striped table-bordered">
+    <tr>
+      <td>Id Użytkownika</td>
+      <td>{{user.id}}</td>
+    </tr>
+    <tr>
+      <td>Imię i nazwisko</td>
+      <td>{{user.name}}</td>
+    </tr>
+    <tr>
+      <td>Nazwa użytkownika</td>
+      <td>{{user.username}}</td>
+    </tr>
+    <tr>
+      <td>E-mail</td>
+      <td>{{user.email}}</td>
+    </tr>
+    <tr>
+      <td>Adres</td>
+      <td>
+        <p>Ulica: {{user.address.street}}</p>
+        <p>Mieszkanie: {{user.address.suite}}</p>
+        <p>Miasto: {{user.address.city}}</p>
+        <p>Kod pocztowy: {{user.address.zipcode}}</p>
+        <p>Geolokalizacja: </p>
+          <ul>
+            <li>Szerokość: {{user.address.geo.lat}}</li>
+            <li>Długość: {{user.address.geo.lng}}</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Telefon</td>
+        <td>{{user.phone}}</td>
+      </tr>
+      <tr>
+        <td>Strona www</td>
+        <td>{{user.website}}</td>
+      </tr>
+      <tr>
+        <td>Firma</td>
+        <td>
+          <p>Nazwa: {{user.company.name}}</p>
+          <p>Catch Phrase: {{user.company.catchPhrase}}</p>
+          <p>Bs: {{user.company.bs}}</p>
+        </td>
+      </tr>
+
+  </table>
+  <p>
+</div>

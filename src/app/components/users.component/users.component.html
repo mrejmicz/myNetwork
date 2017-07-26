@@ -1,0 +1,14 @@
+<table *ngIf="users" class="table table-hover table-striped table-condensed table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Imię i nazwisko</th>
+        <th>Nazwa Użytkownika</th>
+      </tr>
+    </thead>
+      <tr *ngFor="let user of users; let i = index" (click)="userDetail(i)">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.username}}</td>
+      </tr>
+</table>

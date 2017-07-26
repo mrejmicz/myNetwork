@@ -1,0 +1,12 @@
+<table *ngIf="posts" class="table table-hover table-striped table-condensed table-bordered">
+    <thead>
+      <tr>
+        <th>ID postu</th>
+        <th>ID użytkownika</th>
+      </tr>
+    </thead>
+      <tr *ngFor="let post of posts; let i = index" (click)="postDetail(i)">
+        <td>{{post.id}}</td>
+        <td>{{post.userId}}</td>
+      </tr>
+</table>

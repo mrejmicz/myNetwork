@@ -1,0 +1,23 @@
+<button class="btn btn-outline-primary btn-lg"(click)="goBack()">Back</button>
+<p>
+<div *ngIf="post&&user">
+  <table  class="table table-hover table-condensed table-striped table-bordered">
+    <tr (click)="userDetail()">
+      <td>Użytkownik</td>
+      <td>{{user.name}}</td>
+    </tr>
+    <tr>
+      <td>Id postu</td>
+      <td>{{post.id}}</td>
+    </tr>
+    <tr>
+      <td>Tytuł</td>
+      <td>{{post.title}}</td>
+    </tr>
+    <tr>
+      <td>Treść</td>
+      <td>{{post.body}}</td>
+    </tr>
+  </table>
+  <p>
+</div>
