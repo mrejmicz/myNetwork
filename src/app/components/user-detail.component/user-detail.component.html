@@ -1,6 +1,8 @@
-<button class="btn btn-outline-primary btn-lg"(click)="goBack()">Back</button>
-<p>
 <div *ngIf="user">
+  <button class="btn btn-outline-primary btn-lg"(click)="goBack()">Back</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-info btn-md  " (click)="edit()">Edit</button>
+  <button class="btn btn-danger btn-md" (click)="remove()">Remove</button>
+  <p>
   <table class="table table-hover table-condensed table-striped table-bordered">
     <tr>
       <td>Id Użytkownika</td>

@@ -31,11 +31,25 @@ constructor (private http: Http) {}
   }
 
   getUser(id: Number): Promise<User> {
-    return this.getUsers().then(users => users.find(user => user.id === id));
+    return this.http.get(this.apiUrl + '/users/' + id)
+                .toPromise()
+                .then(response => response.json() as User)
+                .catch(this.handleError);
   }
 
+  deleteUser(id: Number): Promise<void> {
+    return this.http.delete(this.apiUrl + '/users/' + id, {headers: new Headers({'ContentType': 'application/json'})})
+                .toPromise()
+                .then(() => null)
+                .catch(this.handleError);
+  }
+
+
   getPost(id: Number): Promise<Post> {
-    return this.getPosts().then(posts => posts.find(post => post.id === id));
+    return this.http.get(this.apiUrl + '/posts/' + id)
+                .toPromise()
+                .then(response => response.json() as Post)
+                .catch(this.handleError);
   }
 
   getCurrencies(): Promise<Currency[]> {

@@ -25,9 +25,14 @@ constructor (
     this.route.paramMap
       .switchMap((params: ParamMap) => this.dataService.getUser(+params.get('id')))
       .subscribe(user => this.user = new User(user));
-      
-  }
 
+  }
+  edit(): void {
+
+  }
+  remove(): void {
+    this.dataService.deleteUser(this.user.id).then(() => this.location.back());
+  }
   goBack(): void {
     this.location.back();
   }
