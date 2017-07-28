@@ -27,6 +27,13 @@ constructor (private http: Http) {}
                 .catch(this.handleError);
   }
 
+  updateUser(user: User): Promise<User> {
+    return this.http.put(this.apiUrl + '/users/' + user.id, user, this.headers)
+                .toPromise()
+                .then(() => user)
+                .catch(this.handleError);
+  }
+
   deleteUser(id: Number): Promise<void> {
     return this.http.delete(this.apiUrl + '/users/' + id, {headers: this.headers})
                 .toPromise()

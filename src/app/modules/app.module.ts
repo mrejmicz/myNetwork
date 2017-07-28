@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent }  from '../components/app.component/app.component';
 import { PostsComponent } from '../components/posts.component/posts.component';
@@ -18,7 +19,8 @@ import { NbpService } from '../services/nbp.service';
   imports:      [
     BrowserModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     UsersService,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import 'rxjs/add/operator/switchMap';
@@ -18,7 +18,8 @@ user: User;
 constructor (
   private usersService: UsersService,
   private route: ActivatedRoute,
-  private location: Location
+  private location: Location,
+  private router: Router
 ) {}
 
   ngOnInit(): void {
@@ -27,11 +28,11 @@ constructor (
       .subscribe(user => this.user = new User(user));
 
   }
-  edit(): void {
-
+  updateUser(): void {
+    this.usersService.updateUser(this.user).then(() => this.goBack());
   }
-  remove(): void {
-    this.usersService.deleteUser(this.user.id).then(() => this.location.back());
+  deleteUser(): void {
+    this.usersService.deleteUser(this.user.id).then(() => this.router.navigate(['/users']));
   }
   goBack(): void {
     this.location.back();
