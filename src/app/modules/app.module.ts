@@ -10,7 +10,9 @@ import { UserDetailComponent } from '../components/user-detail.component/user-de
 import { PostDetailComponent } from '../components/post-detail.component/post-detail.component';
 import { CurrenciesComponent } from '../components/currencies.component/currencies.component';
 
-import { DataService } from '../services/data.service';
+import { UsersService } from '../services/users.service';
+import { PostsService } from '../services/posts.service';
+import { NbpService } from '../services/nbp.service';
 
 @NgModule({
   imports:      [
@@ -18,7 +20,11 @@ import { DataService } from '../services/data.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ DataService ],
+  providers: [
+    UsersService,
+    PostsService,
+    NbpService
+  ],
   declarations: [
     AppComponent,
     PostsComponent,

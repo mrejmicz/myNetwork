@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Post } from '../../model/post';
-import { DataService } from '../../services/data.service';
+import { PostsService } from '../../services/posts.service';
 
 @Component({
   selector: 'my-posts',
@@ -13,12 +13,12 @@ export class PostsComponent implements OnInit {
   posts: Post[];
 
   constructor(
-    private dataService: DataService,
+    private postsService: PostsService,
     private router: Router
   ){}
 
   ngOnInit(): void {
-    this.dataService.getPosts().then(posts => this.posts = posts);
+    this.postsService.getPosts().then(posts => this.posts = posts);
   }
 
   postDetail(id: number): void {

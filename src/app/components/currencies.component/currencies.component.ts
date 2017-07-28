@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataService } from '../../services/data.service';
+import { NbpService } from '../../services/nbp.service';
 import { Currency } from '../../model/currency';
 
 @Component({
@@ -12,10 +12,10 @@ export class CurrenciesComponent implements OnInit {
 
   currencies: Currency[];
 
-  constructor (private dataService: DataService) {}
+  constructor (private nbpService: NbpService) {}
 
 
   ngOnInit(): void {
-    this.dataService.getCurrencies().then(currencies => this.currencies = currencies);
+    this.nbpService.getCurrencies().then(currencies => this.currencies = currencies);
   }
 }

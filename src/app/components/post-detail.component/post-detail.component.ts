@@ -4,7 +4,8 @@ import { Location } from '@angular/common';
 
 import 'rxjs/add/operator/switchMap';
 
-import { DataService } from '../../services/data.service';
+import { UsersService } from '../../services/users.service';
+import { PostsService } from '../../services/posts.service';
 import { Post } from '../../model/post';
 import { User } from '../../model/user';
 
@@ -19,7 +20,8 @@ post: Post;
 user: User;
 
 constructor (
-  private dataService: DataService,
+  private usersService: UsersService,
+  private postsService: PostsService,
   private route: ActivatedRoute,
   private location: Location,
   private router: Router
@@ -27,10 +29,10 @@ constructor (
 
   ngOnInit(): void {
     this.route.paramMap
-      .switchMap((params: ParamMap) => this.dataService.getPost(+params.get('id')))
+      .switchMap((params: ParamMap) => this.postsService.getPost(+params.get('id')))
       .subscribe(post => {
         this.post = post
-        this.dataService.getUser(this.post.userId).then(user => this.user = user);
+        this.usersService.getUser(this.post.userId).then(user => this.user = user);
       });
 
   }

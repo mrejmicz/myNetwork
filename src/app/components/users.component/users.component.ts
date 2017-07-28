@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
-import { DataService } from '../../services/data.service';
+import { UsersService } from '../../services/users.service';
 import { User } from '../../model/user';
 
 @Component({
@@ -15,12 +15,12 @@ export class UsersComponent implements OnInit {
 users: User[];
 
 constructor(
-  private dataService: DataService,
+  private usersService: UsersService,
   private router: Router
 ) {}
 
   ngOnInit(): void {
-    this.dataService.getUsers().then(users => this.users = users);
+    this.usersService.getUsers().then(users => this.users = users);
   }
 
   userDetail(id: number): void {
