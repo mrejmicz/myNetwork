@@ -10,7 +10,7 @@ import { CurrenciesComponent } from '../components/currencies.component/currenci
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/posts',
+    redirectTo: '/users',
     pathMatch: 'full'
   },
   {

@@ -13,6 +13,7 @@ import { User } from '../../model/user';
 export class UsersComponent implements OnInit {
 
 users: User[];
+userCreate: User;
 
 constructor(
   private usersService: UsersService,
@@ -25,6 +26,14 @@ constructor(
 
   userDetail(id: number): void {
     this.router.navigate(['/users', this.users[id].id]);
+  }
+
+  createInit(): void {
+    this.userCreate = new User();
+  }
+
+  createUser(): void {
+    this.usersService.createUser(this.userCreate).then(() => this.usersService.getUsers().then(users => this.users = users));
   }
 
 }

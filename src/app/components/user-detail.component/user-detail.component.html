@@ -1,7 +1,7 @@
 <div *ngIf="user">
   <button class="btn btn-outline-primary btn-lg"(click)="goBack()">Wstecz</button>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <button class="btn btn-info btn-md  " data-toggle="modal" data-target="#editModal">Edytuj</button>
+  <button class="btn btn-info btn-md  " data-toggle="modal" data-target="#editModal" (click)="editInit()">Edytuj</button>
   <button class="btn btn-danger btn-md" data-toggle="modal" data-target="#deleteModal">Usuń</button>
   <p>
   <table class="table table-hover table-condensed table-striped table-bordered">
@@ -76,7 +76,7 @@
   </div>
 
       <!-- editModal -->
-    <div class="modal fade" id="editModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div *ngIf="userEdit" class="modal fade" id="editModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -93,44 +93,44 @@
               </tr>
               <tr>
                 <td>Imię i nazwisko</td>
-                <td><input #name value={{user.name}}/></td>
+                <td><input [(ngModel)]="userEdit.name" #name value={{user.name}}/></td>
               </tr>
               <tr>
                 <td>Nazwa użytkownika</td>
-                <td><input #username value={{user.username}}/></td>
+                <td><input [(ngModel)]="userEdit.username" #username value={{user.username}}/></td>
               </tr>
               <tr>
                 <td>E-mail</td>
-                <td><input #email value={{user.email}}/></td>
+                <td><input [(ngModel)]="userEdit.email" #email value={{user.email}}/></td>
               </tr>
               <tr>
                 <td>Adres</td>
                 <td>
-                  <p>Ulica: <input #address.street value={{user.address.street}}/></p>
-                  <p>Mieszkanie: <input #address.suite value={{user.address.suite}}/></p>
-                  <p>Miasto: <input #address.city value={{user.address.city}}/></p>
-                  <p>Kod pocztowy: <input #address.zipcode value={{user.address.zipcode}}/></p>
+                  <p>Ulica: <br><input [(ngModel)]="userEdit.address.street" #address.street value={{user.address.street}}/></p>
+                  <p>Mieszkanie: <br><input [(ngModel)]="userEdit.address.suite" #address.suite value={{user.address.suite}}/></p>
+                  <p>Miasto: <br><input [(ngModel)]="userEdit.address.city" #address.city value={{user.address.city}}/></p>
+                  <p>Kod pocztowy: <br><input [(ngModel)]="userEdit.address.zipcode" #address.zipcode value={{user.address.zipcode}}/></p>
                   <p>Geolokalizacja: </p>
                     <ul>
-                      <li>Szerokość: <input #address.geo.lat value={{user.address.geo.lat}}/></li>
-                      <li>Długość: <input #address.geo.lng value={{user.address.geo.lng}}/></li>
+                      <li>Szerokość: <input [(ngModel)]="userEdit.address.geo.lat"  #address.geo.lat value={{user.address.geo.lat}}/></li>
+                      <li>Długość: <input [(ngModel)]="userEdit.address.geo.lng" #address.geo.lng value={{user.address.geo.lng}}/></li>
                     </ul>
                   </td>
                 </tr>
                 <tr>
                   <td>Telefon</td>
-                  <td><input #phone value={{user.phone}}/></td>
+                  <td><input [(ngModel)]="userEdit.phone" #phone value={{user.phone}}/></td>
                 </tr>
                 <tr>
                   <td>Strona www</td>
-                  <td><input #website value={{user.website}}/></td>
+                  <td><input [(ngModel)]="userEdit.website" #website value={{user.website}}/></td>
                 </tr>
                 <tr>
                   <td>Firma</td>
                   <td>
-                    <p>Nazwa: <input #company.name value={{user.company.name}}/></p>
-                    <p>Catch Phrase: <input #company.catchPhrase value={{user.company.catchPhrase}}/></p>
-                    <p>Bs: <input #company.bs value={{user.company.bs}}/></p>
+                    <p>Nazwa: <br><input [(ngModel)]="userEdit.company.name" #company.name value={{user.company.name}}/></p>
+                    <p>Catch Phrase: <br><input [(ngModel)]="userEdit.company.catchPhrase" #company.catchPhrase value={{user.company.catchPhrase}}/></p>
+                    <p>Bs: <br><input [(ngModel)]="userEdit.company.bs" #company.bs value={{user.company.bs}}/></p>
                   </td>
                 </tr>
             </table>

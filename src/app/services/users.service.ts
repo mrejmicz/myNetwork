@@ -27,10 +27,17 @@ constructor (private http: Http) {}
                 .catch(this.handleError);
   }
 
+  createUser(user: User): Promise<User> {
+    return this.http.post(this.apiUrl + '/users', user, this.headers)
+                .toPromise()
+                .then(response => response.json() as User)
+                .catch(this.handleError);
+  }
+
   updateUser(user: User): Promise<User> {
     return this.http.put(this.apiUrl + '/users/' + user.id, user, this.headers)
                 .toPromise()
-                .then(() => user)
+                .then(response => response.json() as User)
                 .catch(this.handleError);
   }
 

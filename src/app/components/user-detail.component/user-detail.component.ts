@@ -14,6 +14,7 @@ import { UsersService } from '../../services/users.service';
 
 export class UserDetailComponent implements OnInit {
 user: User;
+userEdit: User;
 
 constructor (
   private usersService: UsersService,
@@ -25,17 +26,20 @@ constructor (
   ngOnInit(): void {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.usersService.getUser(+params.get('id')))
-      .subscribe(user => this.user = new User(user));
-
+      .subscribe(user => this.user = user);
   }
   updateUser(): void {
-    this.usersService.updateUser(this.user).then(() => this.goBack());
+    this.usersService.updateUser(this.userEdit).then(user => this.user = user);
   }
   deleteUser(): void {
     this.usersService.deleteUser(this.user.id).then(() => this.router.navigate(['/users']));
   }
   goBack(): void {
     this.location.back();
+  }
+
+  editInit(): void {
+    this.userEdit  = this.user;
   }
 
 }

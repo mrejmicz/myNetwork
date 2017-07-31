@@ -1,3 +1,5 @@
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal" (click)="createInit()">Nowy użytkownik</button>
+<p>
 <table *ngIf="users" class="table table-hover table-striped table-condensed table-bordered">
     <thead>
       <tr>
@@ -12,3 +14,67 @@
         <td>{{user.username}}</td>
       </tr>
 </table>
+
+<div *ngIf="userCreate" class="modal fade" id="createModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createModalLabel">Utwórz użytkownika</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover table-condensed table-striped table-bordered">
+          <tr>
+            <td>Imię i nazwisko</td>
+            <td><input [(ngModel)]="userCreate.name" #name/></td>
+          </tr>
+          <tr>
+            <td>Nazwa użytkownika</td>
+            <td><input [(ngModel)]="userCreate.username" #username/></td>
+          </tr>
+          <tr>
+            <td>E-mail</td>
+            <td><input [(ngModel)]="userCreate.email" #email/></td>
+          </tr>
+          <tr>
+            <td>Adres</td>
+            <td>
+              <p>Ulica: <br><input [(ngModel)]="userCreate.address.street" #address.street/></p>
+              <p>Mieszkanie: <br><input [(ngModel)]="userCreate.address.suite" #address.suite/></p>
+              <p>Miasto: <br><input [(ngModel)]="userCreate.address.city" #address.city/></p>
+              <p>Kod pocztowy: <br><input [(ngModel)]="userCreate.address.zipcode" #address.zipcode/></p>
+              <p>Geolokalizacja: </p>
+                <ul>
+                  <li>Szerokość: <input [(ngModel)]="userCreate.address.geo.lat"  #address.geo.lat/></li>
+                  <li>Długość: <input [(ngModel)]="userCreate.address.geo.lng" #address.geo.lng/></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Telefon</td>
+              <td><input [(ngModel)]="userCreate.phone" #phone/></td>
+            </tr>
+            <tr>
+              <td>Strona www</td>
+              <td><input [(ngModel)]="userCreate.website" #website/></td>
+            </tr>
+            <tr>
+              <td>Firma</td>
+              <td>
+                <p>Nazwa: <br><input [(ngModel)]="userCreate.company.name" #company.name/></p>
+                <p>Catch Phrase: <br><input [(ngModel)]="userCreate.company.catchPhrase" #company.catchPhrase/></p>
+                <p>Bs: <br><input [(ngModel)]="userCreate.company.bs" #company.bs/></p>
+              </td>
+            </tr>
+        </table>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="createUser()">Dodaj</button>
+      </div>
+    </div>
+  </div>
+</div>
