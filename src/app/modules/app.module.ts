@@ -10,6 +10,7 @@ import { UsersComponent } from '../components/users.component/users.component';
 import { UserDetailComponent } from '../components/user-detail.component/user-detail.component';
 import { PostDetailComponent } from '../components/post-detail.component/post-detail.component';
 import { CurrenciesComponent } from '../components/currencies.component/currencies.component';
+import { UserSearchComponent } from '../components/user-search.component/user-search.component';
 
 import { UsersService } from '../services/users.service';
 import { PostsService } from '../services/posts.service';
@@ -33,7 +34,8 @@ import { NbpService } from '../services/nbp.service';
     UsersComponent,
     UserDetailComponent,
     PostDetailComponent,
-    CurrenciesComponent
+    CurrenciesComponent,
+    UserSearchComponent
   ],
   bootstrap:    [ AppComponent ]
 })
