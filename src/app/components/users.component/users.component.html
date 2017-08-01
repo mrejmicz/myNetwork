@@ -9,7 +9,7 @@
         <th>Nazwa Użytkownika</th>
       </tr>
     </thead>
-      <tr *ngFor="let user of users; let i = index" (click)="userDetail(i)">
+      <tr style="cursor:pointer" *ngFor="let user of users; let i = index" (click)="userDetail(i)">
         <td>{{user.id}}</td>
         <td>{{user.name}}</td>
         <td>{{user.username}}</td>
